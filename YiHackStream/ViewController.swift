@@ -15,7 +15,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupMediaPlayer()
-        startStreaming()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Start streaming after view is fully loaded and visible
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.startStreaming()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -39,14 +46,15 @@ class ViewController: UIViewController {
         videoView = UIView()
         videoView.backgroundColor = .black
         videoView.translatesAutoresizingMaskIntoConstraints = false
+        videoView.clipsToBounds = true
         view.addSubview(videoView)
         
         // Constraints for full screen
         NSLayoutConstraint.activate([
-            videoView.topAnchor.constraint(equalTo: view.topAnchor),
+            videoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             videoView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             videoView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            videoView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            videoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -55,7 +63,12 @@ class ViewController: UIViewController {
         // Initialize VLC media player
         mediaPlayer = VLCMediaPlayer()
         mediaPlayer.delegate = self
-        mediaPlayer.drawable = videoView
+        
+        // IMPORTANT: Set drawable AFTER view is laid out
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.mediaPlayer.drawable = self.videoView
+        }
         
         // Configure media player options for better RTSP performance
         guard let url = URL(string: rtspURL) else {
@@ -65,12 +78,14 @@ class ViewController: UIViewController {
         
         let media = VLCMedia(url: url)
         
-        // Add VLC options for better RTSP streaming performance
+        // Add VLC options for iOS video output and RTSP streaming
         media.addOption("--network-caching=300")     // Network caching in ms
         media.addOption("--rtsp-tcp")                // Use TCP for RTSP (more reliable)
         media.addOption("--live-caching=300")        // Live stream caching
         media.addOption("--clock-jitter=0")          // Reduce jitter
         media.addOption("--clock-synchro=0")         // Disable clock synchronization
+        // media.addOption("--vout=ios_eagl")           // iOS video output
+        media.addOption("--avcodec-hw=any")          // Hardware acceleration
         
         mediaPlayer.media = media
     }
