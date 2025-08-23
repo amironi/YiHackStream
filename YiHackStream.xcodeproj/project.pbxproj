@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8D06BE5FA019CD27CC1C4ED7 /* Pods_YiHackStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5BA4E2F609D06100A5D6A2B /* Pods_YiHackStream.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		29F085D52E58D6040098E7F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,25 +28,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28DA67E52311F977741DBEF7 /* Pods-YiHackStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiHackStream.debug.xcconfig"; path = "Target Support Files/Pods-YiHackStream/Pods-YiHackStream.debug.xcconfig"; sourceTree = "<group>"; };
 		29F085C72E58D6030098E7F4 /* YiHackStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YiHackStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F085D42E58D6040098E7F4 /* YiHackStreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YiHackStreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F085DE2E58D6040098E7F4 /* YiHackStreamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YiHackStreamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5BA4E2F609D06100A5D6A2B /* Pods_YiHackStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YiHackStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5AA63BA037D7404313137B2 /* Pods-YiHackStream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiHackStream.release.xcconfig"; path = "Target Support Files/Pods-YiHackStream/Pods-YiHackStream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		29F085F22E58DA560098E7F4 /* Exceptions for "YiHackStream" folder in "YiHackStream" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 29F085C62E58D6030098E7F4 /* YiHackStream */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		29F085C92E58D6030098E7F4 /* YiHackStream */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				29F085F22E58DA560098E7F4 /* Exceptions for "YiHackStream" folder in "YiHackStream" target */,
+			);
 			path = YiHackStream;
-			sourceTree = "<group>";
-		};
-		29F085D72E58D6040098E7F4 /* YiHackStreamTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = YiHackStreamTests;
-			sourceTree = "<group>";
-		};
-		29F085E12E58D6040098E7F4 /* YiHackStreamUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = YiHackStreamUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D06BE5FA019CD27CC1C4ED7 /* Pods_YiHackStream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,13 +83,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28B611E17622F013ACE720CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5BA4E2F609D06100A5D6A2B /* Pods_YiHackStream.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		29F085BE2E58D6030098E7F4 = {
 			isa = PBXGroup;
 			children = (
 				29F085C92E58D6030098E7F4 /* YiHackStream */,
-				29F085D72E58D6040098E7F4 /* YiHackStreamTests */,
-				29F085E12E58D6040098E7F4 /* YiHackStreamUITests */,
 				29F085C82E58D6030098E7F4 /* Products */,
+				88E6894CF4ECF65CB5EDD191 /* Pods */,
+				28B611E17622F013ACE720CD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +111,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		88E6894CF4ECF65CB5EDD191 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				28DA67E52311F977741DBEF7 /* Pods-YiHackStream.debug.xcconfig */,
+				E5AA63BA037D7404313137B2 /* Pods-YiHackStream.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,9 +127,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29F085E82E58D6040098E7F4 /* Build configuration list for PBXNativeTarget "YiHackStream" */;
 			buildPhases = (
+				2013B955C3EB677ED2990166 /* [CP] Check Pods Manifest.lock */,
 				29F085C32E58D6030098E7F4 /* Sources */,
 				29F085C42E58D6030098E7F4 /* Frameworks */,
 				29F085C52E58D6030098E7F4 /* Resources */,
+				5E62AB5F5FAD5BF8925AD16B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -111,8 +141,6 @@
 				29F085C92E58D6030098E7F4 /* YiHackStream */,
 			);
 			name = YiHackStream;
-			packageProductDependencies = (
-			);
 			productName = YiHackStream;
 			productReference = 29F085C72E58D6030098E7F4 /* YiHackStream.app */;
 			productType = "com.apple.product-type.application";
@@ -130,12 +158,7 @@
 			dependencies = (
 				29F085D62E58D6040098E7F4 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				29F085D72E58D6040098E7F4 /* YiHackStreamTests */,
-			);
 			name = YiHackStreamTests;
-			packageProductDependencies = (
-			);
 			productName = YiHackStreamTests;
 			productReference = 29F085D42E58D6040098E7F4 /* YiHackStreamTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -153,12 +176,7 @@
 			dependencies = (
 				29F085E02E58D6040098E7F4 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				29F085E12E58D6040098E7F4 /* YiHackStreamUITests */,
-			);
 			name = YiHackStreamUITests;
-			packageProductDependencies = (
-			);
 			productName = YiHackStreamUITests;
 			productReference = 29F085DE2E58D6040098E7F4 /* YiHackStreamUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -230,6 +248,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2013B955C3EB677ED2990166 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YiHackStream-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E62AB5F5FAD5BF8925AD16B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YiHackStream/Pods-YiHackStream-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YiHackStream/Pods-YiHackStream-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YiHackStream/Pods-YiHackStream-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		29F085C32E58D6030098E7F4 /* Sources */ = {
@@ -390,13 +450,16 @@
 		};
 		29F085E92E58D6040098E7F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28DA67E52311F977741DBEF7 /* Pods-YiHackStream.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9MLZ5E89M7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YiHackStream/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -417,13 +480,16 @@
 		};
 		29F085EA2E58D6040098E7F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5AA63BA037D7404313137B2 /* Pods-YiHackStream.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9MLZ5E89M7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YiHackStream/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
