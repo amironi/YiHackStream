@@ -63,12 +63,8 @@ class ViewController: UIViewController {
         // Initialize VLC media player
         mediaPlayer = VLCMediaPlayer()
         mediaPlayer.delegate = self
-        
-        // IMPORTANT: Set drawable AFTER view is laid out
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.mediaPlayer.drawable = self.videoView
-        }
+        // Set drawable now; we'll also re-assign after layout to be safe
+        mediaPlayer.drawable = videoView
         
         // Configure media player options for better RTSP performance
         guard let url = URL(string: rtspURL) else {
@@ -79,15 +75,22 @@ class ViewController: UIViewController {
         let media = VLCMedia(url: url)
         
         // Add VLC options for iOS video output and RTSP streaming
-        media.addOption("--network-caching=300")     // Network caching in ms
+        media.addOption("--network-caching=1000")    // Network caching in ms
         media.addOption("--rtsp-tcp")                // Use TCP for RTSP (more reliable)
-        media.addOption("--live-caching=300")        // Live stream caching
-        media.addOption("--clock-jitter=0")          // Reduce jitter
-        media.addOption("--clock-synchro=0")         // Disable clock synchronization
-        // media.addOption("--vout=ios_eagl")           // iOS video output
-        media.addOption("--avcodec-hw=any")          // Hardware acceleration
+        media.addOption("--live-caching=1000")       // Live stream caching
+        // Prefer iOS GL video output on modern iOS
+        // media.addOption("--vout=ios_gl")
+        // media.addOption("--avcodec-hw=any")          // Hardware acceleration
         
         mediaPlayer.media = media
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Ensure VLC always has a valid drawable with correct bounds
+        if mediaPlayer?.drawable as? UIView !== videoView {
+            mediaPlayer?.drawable = videoView
+        }
     }
     
     // MARK: - Streaming Control
