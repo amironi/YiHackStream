@@ -21,7 +21,9 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         // Start streaming after view is fully loaded and visible
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            self?.startStreaming()
+            guard let self = self else { return }
+            self.view.bringSubviewToFront(self.videoView)
+            self.startStreaming()
         }
     }
     
@@ -46,6 +48,7 @@ class ViewController: UIViewController {
         videoView = UIView()
         videoView.backgroundColor = .black
         videoView.translatesAutoresizingMaskIntoConstraints = false
+        videoView.contentMode = .scaleAspectFit
         videoView.clipsToBounds = true
         view.addSubview(videoView)
         
@@ -65,6 +68,7 @@ class ViewController: UIViewController {
         mediaPlayer.delegate = self
         // Set drawable now; we'll also re-assign after layout to be safe
         mediaPlayer.drawable = videoView
+        print("VLC drawable set to videoView: \(videoView != nil)")
         
         // Configure media player options for better RTSP performance
         guard let url = URL(string: rtspURL) else {
@@ -138,6 +142,13 @@ extension ViewController: VLCMediaPlayerDelegate {
         switch player.state {
         case .playing:
             print("RTSP Stream: Playing")
+            // Diagnostics
+            let hasVideoOut = player.hasVideoOut
+            let size = player.videoSize
+            print("Diagnostics -> hasVideoOut: \(hasVideoOut), videoSize: \(Int(size.width))x\(Int(size.height)))")
+            if let tracks = player.media?.tracksInformation as? [[AnyHashable: Any]] {
+                print("Tracks -> \(tracks)")
+            }
             
         case .paused:
             print("RTSP Stream: Paused")
