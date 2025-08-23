@@ -10,28 +10,9 @@
 		8D06BE5FA019CD27CC1C4ED7 /* Pods_YiHackStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5BA4E2F609D06100A5D6A2B /* Pods_YiHackStream.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		29F085D52E58D6040098E7F4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29F085BF2E58D6030098E7F4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 29F085C62E58D6030098E7F4;
-			remoteInfo = YiHackStream;
-		};
-		29F085DF2E58D6040098E7F4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29F085BF2E58D6030098E7F4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 29F085C62E58D6030098E7F4;
-			remoteInfo = YiHackStream;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		28DA67E52311F977741DBEF7 /* Pods-YiHackStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiHackStream.debug.xcconfig"; path = "Target Support Files/Pods-YiHackStream/Pods-YiHackStream.debug.xcconfig"; sourceTree = "<group>"; };
 		29F085C72E58D6030098E7F4 /* YiHackStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YiHackStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		29F085D42E58D6040098E7F4 /* YiHackStreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YiHackStreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		29F085DE2E58D6040098E7F4 /* YiHackStreamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YiHackStreamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5BA4E2F609D06100A5D6A2B /* Pods_YiHackStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YiHackStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5AA63BA037D7404313137B2 /* Pods-YiHackStream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiHackStream.release.xcconfig"; path = "Target Support Files/Pods-YiHackStream/Pods-YiHackStream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,20 +47,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		29F085D12E58D6040098E7F4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		29F085DB2E58D6040098E7F4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -105,8 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				29F085C72E58D6030098E7F4 /* YiHackStream.app */,
-				29F085D42E58D6040098E7F4 /* YiHackStreamTests.xctest */,
-				29F085DE2E58D6040098E7F4 /* YiHackStreamUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,42 +110,6 @@
 			productReference = 29F085C72E58D6030098E7F4 /* YiHackStream.app */;
 			productType = "com.apple.product-type.application";
 		};
-		29F085D32E58D6040098E7F4 /* YiHackStreamTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 29F085EB2E58D6040098E7F4 /* Build configuration list for PBXNativeTarget "YiHackStreamTests" */;
-			buildPhases = (
-				29F085D02E58D6040098E7F4 /* Sources */,
-				29F085D12E58D6040098E7F4 /* Frameworks */,
-				29F085D22E58D6040098E7F4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				29F085D62E58D6040098E7F4 /* PBXTargetDependency */,
-			);
-			name = YiHackStreamTests;
-			productName = YiHackStreamTests;
-			productReference = 29F085D42E58D6040098E7F4 /* YiHackStreamTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		29F085DD2E58D6040098E7F4 /* YiHackStreamUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 29F085EE2E58D6040098E7F4 /* Build configuration list for PBXNativeTarget "YiHackStreamUITests" */;
-			buildPhases = (
-				29F085DA2E58D6040098E7F4 /* Sources */,
-				29F085DB2E58D6040098E7F4 /* Frameworks */,
-				29F085DC2E58D6040098E7F4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				29F085E02E58D6040098E7F4 /* PBXTargetDependency */,
-			);
-			name = YiHackStreamUITests;
-			productName = YiHackStreamUITests;
-			productReference = 29F085DE2E58D6040098E7F4 /* YiHackStreamUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -193,14 +122,6 @@
 				TargetAttributes = {
 					29F085C62E58D6030098E7F4 = {
 						CreatedOnToolsVersion = 16.4;
-					};
-					29F085D32E58D6040098E7F4 = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 29F085C62E58D6030098E7F4;
-					};
-					29F085DD2E58D6040098E7F4 = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 29F085C62E58D6030098E7F4;
 					};
 				};
 			};
@@ -219,28 +140,12 @@
 			projectRoot = "";
 			targets = (
 				29F085C62E58D6030098E7F4 /* YiHackStream */,
-				29F085D32E58D6040098E7F4 /* YiHackStreamTests */,
-				29F085DD2E58D6040098E7F4 /* YiHackStreamUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		29F085C52E58D6030098E7F4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		29F085D22E58D6040098E7F4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		29F085DC2E58D6040098E7F4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -280,9 +185,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-YiHackStream/Pods-YiHackStream-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-YiHackStream/Pods-YiHackStream-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -299,34 +208,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		29F085D02E58D6040098E7F4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		29F085DA2E58D6040098E7F4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		29F085D62E58D6040098E7F4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 29F085C62E58D6030098E7F4 /* YiHackStream */;
-			targetProxy = 29F085D52E58D6040098E7F4 /* PBXContainerItemProxy */;
-		};
-		29F085E02E58D6040098E7F4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 29F085C62E58D6030098E7F4 /* YiHackStream */;
-			targetProxy = 29F085DF2E58D6040098E7F4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		29F085E62E58D6040098E7F4 /* Debug */ = {
@@ -366,7 +248,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -429,7 +311,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -454,6 +336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9MLZ5E89M7;
@@ -472,6 +355,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.YiHackStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -484,6 +368,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9MLZ5E89M7;
@@ -502,77 +387,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.YiHackStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		29F085EC2E58D6040098E7F4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.YiHackStreamTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YiHackStream.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YiHackStream";
-			};
-			name = Debug;
-		};
-		29F085ED2E58D6040098E7F4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.YiHackStreamTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YiHackStream.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YiHackStream";
-			};
-			name = Release;
-		};
-		29F085EF2E58D6040098E7F4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.YiHackStreamUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = YiHackStream;
-			};
-			name = Debug;
-		};
-		29F085F02E58D6040098E7F4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.YiHackStreamUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = YiHackStream;
 			};
 			name = Release;
 		};
@@ -593,24 +411,6 @@
 			buildConfigurations = (
 				29F085E92E58D6040098E7F4 /* Debug */,
 				29F085EA2E58D6040098E7F4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		29F085EB2E58D6040098E7F4 /* Build configuration list for PBXNativeTarget "YiHackStreamTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				29F085EC2E58D6040098E7F4 /* Debug */,
-				29F085ED2E58D6040098E7F4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		29F085EE2E58D6040098E7F4 /* Build configuration list for PBXNativeTarget "YiHackStreamUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				29F085EF2E58D6040098E7F4 /* Debug */,
-				29F085F02E58D6040098E7F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
