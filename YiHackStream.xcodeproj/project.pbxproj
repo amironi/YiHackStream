@@ -96,6 +96,7 @@
 				29F085C32E58D6030098E7F4 /* Sources */,
 				29F085C42E58D6030098E7F4 /* Frameworks */,
 				29F085C52E58D6030098E7F4 /* Resources */,
+				57995D08CFCBE91E4A0EE1A2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +155,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		57995D08CFCBE91E4A0EE1A2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YiHackStream/Pods-YiHackStream-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YiHackStream/Pods-YiHackStream-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YiHackStream/Pods-YiHackStream-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BCEF8750EEA13BAB653BDF68 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
