@@ -82,9 +82,9 @@ class ViewController: UIViewController {
         media.addOption("--network-caching=1000")    // Network caching in ms
         media.addOption("--rtsp-tcp")                // Use TCP for RTSP (more reliable)
         media.addOption("--live-caching=1000")       // Live stream caching
-        // Prefer iOS GL video output on modern iOS
-        // media.addOption("--vout=ios_gl")
-        // media.addOption("--avcodec-hw=any")          // Hardware acceleration
+        // Force OpenGL ES2 video output and disable hardware decoding
+        media.addOption("--vout=ios_gl")
+        media.addOption("--avcodec-hw=none")
         
         mediaPlayer.media = media
     }
