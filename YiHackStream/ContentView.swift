@@ -24,8 +24,8 @@ class VLCPlayerView: UIView {
     
     func playRTSP() {
         guard let mediaPlayer = vlcMediaPlayer else { return }
-        let media = VLCMedia(url: URL(string: "rtsp://192.168.1.127/ch0_0.h264")!)
-        mediaPlayer.media = media
+
+        mediaPlayer.media = VLCMedia(url: URL(string: "rtsp://192.168.1.127/ch0_0.h264")!)
         mediaPlayer.play()
     }
 }
@@ -50,8 +50,16 @@ struct ContentView: View {
             .ignoresSafeArea(.all)
     }
 }
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+
+
+
+// MARK: - App Configuration
+@main
+struct VideoPlayerApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .preferredColorScheme(.dark)
+        }
     }
 }

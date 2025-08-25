@@ -43,13 +43,13 @@
 	</array>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>This app needs access to local network to stream RTSP video feeds.</string>
-
+	
  
-
-		<key>NSCameraUsageDescription</key>
-		<string>Access camera for video streaming</string>
-
-		<key>NSMicrophoneUsageDescription</key>
-		<string>Access microphone for audio streaming</string>
+	
+	<key>NSCameraUsageDescription</key>
+	<string>Access camera for video streaming</string>
+	
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Access microphone for audio streaming</string>
 </dict>
 </plist>
