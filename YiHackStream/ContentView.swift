@@ -36,7 +36,9 @@ class VLCPlayerView: UIView {
         vlcMediaPlayer = VLCMediaPlayer()
         if let player = vlcMediaPlayer as? VLCMediaPlayer {
             player.drawable = self
-            player.delegate = mediaPlayerDelegate
+            // Initialize delegate before assigning
+
+//            player.delegate = VLCMediaPlayerDelegate(streamManager: VLCStreamManager())
         }
       
     }
@@ -52,7 +54,7 @@ class VLCPlayerView: UIView {
      
         
         // Placeholder for demo
-        print("VLCKit not installed. URL to play: \(url)")
+        // print("VLCKit not installed. URL to play: \(url)")
         showPlaceholder(message: "VLCKit Integration Ready\n\nInstall MobileVLCKit pod to enable RTSP playback\n\nURL: \(url)")
     }
     
@@ -577,7 +579,7 @@ struct ContentView: View {
                 HStack(spacing: 10) {
                     presetButton("RTSP Demo", "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov")
                     presetButton("HTTP Stream", "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
-                    presetButton("Local RTSP", "rtsp://admin:password@192.168.1.100:554/stream1")
+                    presetButton("Local RTSP", "rtsp://192.168.1.127/ch0_0.h264")
                     presetButton("RTMP Test", "rtmp://live.twitch.tv/live/your_stream_key")
                 }
                 .padding(.horizontal, 1)
