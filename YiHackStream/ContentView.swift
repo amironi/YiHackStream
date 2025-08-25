@@ -32,9 +32,9 @@ class VLCPlayerView: UIView {
         let media = VLCMedia(url: url)
         
         // Add media options for better iOS compatibility
-    //    media.addOption("rtsp-tcp")
-        // media.addOption("network-caching=300")
-        // media.addOption("rtsp-caching=300")
+         media.addOption("rtsp-tcp")
+         media.addOption("network-caching=300")
+         media.addOption("rtsp-caching=300")
         
         mediaPlayer.media = media
         mediaPlayer.play()
