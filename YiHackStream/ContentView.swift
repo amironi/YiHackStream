@@ -18,14 +18,25 @@ class VLCPlayerView: UIView {
     
     private func setupPlayer() {
         backgroundColor = .black
+        
         vlcMediaPlayer = VLCMediaPlayer()
         vlcMediaPlayer?.drawable = self
     }
     
     func playRTSP() {
         guard let mediaPlayer = vlcMediaPlayer else { return }
-
-        mediaPlayer.media = VLCMedia(url: URL(string: "rtsp://192.168.1.127/ch0_0.h264")!)
+        
+        // Create media with RTSP URL
+        let url = URL(string: "rtsp://192.168.1.127/ch0_0.h264")!
+        
+        let media = VLCMedia(url: url)
+        
+        // Add media options for better iOS compatibility
+    //    media.addOption("rtsp-tcp")
+        // media.addOption("network-caching=300")
+        // media.addOption("rtsp-caching=300")
+        
+        mediaPlayer.media = media
         mediaPlayer.play()
     }
 }
