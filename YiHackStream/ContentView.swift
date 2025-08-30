@@ -23,21 +23,32 @@ class VLCPlayerView: UIView {
         vlcMediaPlayer?.drawable = self
     }
     
-    func playRTSP() {
+     func playRTSP() {
         guard let mediaPlayer = vlcMediaPlayer else { return }
         
-        // Create media with RTSP URL
-        let url = URL(string: "rtsp://192.168.1.127/ch0_0.h264")!
-        
-        let media = VLCMedia(url: url)
-        
-        // Add media options for better iOS compatibility
-         media.addOption("rtsp-tcp")
-         media.addOption("network-caching=300")
-         media.addOption("rtsp-caching=300")
-        
-        mediaPlayer.media = media
-        mediaPlayer.play()
+        // Move network operations to background queue
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            // Create media with RTSP URL
+            let url = URL(string: "rtsp://192.168.1.127/ch0_0.h264")!
+            
+            let media = VLCMedia(url: url)
+            // Enhanced network options
+            media.addOption("--rtsp-tcp")
+            media.addOption("--network-caching=300")
+            media.addOption("--rtsp-caching=300")
+            media.addOption("--rtsp-frame-buffer-size=500000")
+            
+            // Add these new options to fix IP address issue
+            media.addOption("--intf=dummy")
+            media.addOption("--extraintf=")
+            media.addOption("--rtsp-host=0.0.0.0")  // Bind to all interfaces
+            media.addOption("--miface-addr=0.0.0.0") // Multicast interface address
+            
+            DispatchQueue.main.async {
+                mediaPlayer.media = media
+                mediaPlayer.play()
+            }
+        }
     }
 }
 
