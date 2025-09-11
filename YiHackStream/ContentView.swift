@@ -41,36 +41,92 @@ class VLCPlayerView: UIView {
         
         // Move network operations to background queue
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            // Create media with RTSP URL
-            let urlString = "rtsp://192.168.1.127/ch0_0.h264"
-            print("🔗 Connecting to: \(urlString)")
+            // Try multiple RTSP URL formats for Yi cameras
+            let urlStrings = [
+                "rtsp://192.168.1.127/ch0_0.h264",
+                "rtsp://192.168.1.127:554/ch0_0.h264",
+                "rtsp://192.168.1.127/live/ch0_0.h264",
+                "rtsp://192.168.1.127:554/live/ch0_0.h264",
+                "rtsp://192.168.1.127/ch0_1.h264",
+                "rtsp://192.168.1.127:554/ch0_1.h264"
+            ]
             
-            guard let url = URL(string: urlString) else {
-                print("❌ Invalid RTSP URL")
-                return
-            }
+            self?.tryRTSPUrls(urlStrings, mediaPlayer: mediaPlayer, index: 0)
+        }
+    }
+    
+    private func tryRTSPUrls(_ urls: [String], mediaPlayer: VLCMediaPlayer, index: Int) {
+        guard index < urls.count else {
+            print("❌ All RTSP URLs failed")
+            print("📱 Network Debug Info:")
+            print("   - Simulator uses Mac's network connection")
+            print("   - iPhone uses its own Wi-Fi/cellular connection")
+            print("   - Ensure iPhone is on same Wi-Fi as camera (192.168.1.127)")
+            print("   - Try accessing http://192.168.1.127 in iPhone Safari")
+            return
+        }
+        
+        let urlString = urls[index]
+        print("🔗 Trying URL \(index + 1)/\(urls.count): \(urlString)")
+        
+        // Extract IP for network testing
+        if let url = URL(string: urlString), let host = url.host {
+            print("📡 Testing network connectivity to \(host)...")
+            testNetworkConnectivity(to: host)
+        }
+        
+        guard let url = URL(string: urlString) else {
+            print("❌ Invalid RTSP URL: \(urlString)")
+            tryRTSPUrls(urls, mediaPlayer: mediaPlayer, index: index + 1)
+            return
+        }
+        
+        let media = VLCMedia(url: url)
+        // Enhanced network options for reliable RTSP streaming
+        media.addOption("--rtsp-tcp")
+        media.addOption("--network-caching=300")
+        media.addOption("--rtsp-caching=300")
+        media.addOption("--rtsp-frame-buffer-size=500000")
+        media.addOption("--verbose=2")
+        
+        // Fix IP binding issues
+        media.addOption("--intf=dummy")
+        media.addOption("--no-interact")
+        media.addOption("--rtsp-mcast-timeout=5")
+        
+        print("📡 VLC options configured for \(urlString)")
+        
+        DispatchQueue.main.async { [weak self] in
+            mediaPlayer.media = media
+            mediaPlayer.play()
+            print("▶️ VLC play() called for \(urlString)")
             
-            let media = VLCMedia(url: url)
-            // Enhanced network options for reliable RTSP streaming
-            media.addOption("--rtsp-tcp")
-            media.addOption("--network-caching=300")
-            media.addOption("--rtsp-caching=300")
-            media.addOption("--rtsp-frame-buffer-size=500000")
-            media.addOption("--verbose=2")
-            
-            // Fix IP binding issues
-            media.addOption("--intf=dummy")
-            media.addOption("--no-interact")
-            media.addOption("--rtsp-mcast-timeout=5")
-            
-            print("📡 VLC options configured, starting playback...")
-            
-            DispatchQueue.main.async {
-                mediaPlayer.media = media
-                mediaPlayer.play()
-                print("▶️ VLC play() called")
+            // Wait 5 seconds, then check if playing, if not try next URL
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                if mediaPlayer.state != .playing {
+                    print("⏭️ URL \(urlString) failed, trying next...")
+                    self?.tryRTSPUrls(urls, mediaPlayer: mediaPlayer, index: index + 1)
+                } else {
+                    print("✅ Successfully connected to: \(urlString)")
+                }
             }
         }
+    }
+    
+    private func testNetworkConnectivity(to host: String) {
+        let url = URL(string: "http://\(host)")!
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("🚫 Network test failed for \(host): \(error.localizedDescription)")
+                } else if let httpResponse = response as? HTTPURLResponse {
+                    print("✅ Network test successful for \(host): HTTP \(httpResponse.statusCode)")
+                } else {
+                    print("📡 Network response received from \(host)")
+                }
+            }
+        }
+        task.resume()
     }
 }
 
