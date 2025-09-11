@@ -32,17 +32,11 @@ class VLCPlayerView: UIView {
             let url = URL(string: "rtsp://192.168.1.127/ch0_0.h264")!
             
             let media = VLCMedia(url: url)
-            // Enhanced network options
+            // Enhanced network options for reliable RTSP streaming
             media.addOption("--rtsp-tcp")
             media.addOption("--network-caching=300")
             media.addOption("--rtsp-caching=300")
             media.addOption("--rtsp-frame-buffer-size=500000")
-            
-            // Add these new options to fix IP address issue
-            media.addOption("--intf=dummy")
-            media.addOption("--extraintf=")
-            media.addOption("--rtsp-host=0.0.0.0")  // Bind to all interfaces
-            media.addOption("--miface-addr=0.0.0.0") // Multicast interface address
             
             DispatchQueue.main.async {
                 mediaPlayer.media = media
