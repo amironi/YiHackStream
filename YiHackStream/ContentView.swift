@@ -4,7 +4,7 @@ import UIKit
 
 // MARK: - VLC Player View
 class VLCPlayerView: UIView {
-    private var vlcMediaPlayer: VLCMediaPlayer?
+    var vlcMediaPlayer: VLCMediaPlayer?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,9 +19,16 @@ class VLCPlayerView: UIView {
     private func setupPlayer() {
         backgroundColor = .black
         
-        vlcMediaPlayer = VLCMediaPlayer()
+        // Initialize VLC library with proper options
+        let vlcLibrary = VLCLibrary.shared()
+        
+        vlcMediaPlayer = VLCMediaPlayer(library: vlcLibrary)
         vlcMediaPlayer?.drawable = self
         vlcMediaPlayer?.delegate = self
+        
+        // Set video output to ensure proper rendering
+        vlcMediaPlayer?.videoAspectRatio = nil
+        vlcMediaPlayer?.videoCropGeometry = nil
     }
     
      func playRTSP() {
@@ -50,6 +57,11 @@ class VLCPlayerView: UIView {
             media.addOption("--rtsp-caching=300")
             media.addOption("--rtsp-frame-buffer-size=500000")
             media.addOption("--verbose=2")
+            
+            // Fix IP binding issues
+            media.addOption("--intf=dummy")
+            media.addOption("--no-interact")
+            media.addOption("--rtsp-mcast-timeout=5")
             
             print("📡 VLC options configured, starting playback...")
             
@@ -101,12 +113,20 @@ extension VLCPlayerView: VLCMediaPlayerDelegate {
 struct VLCPlayerRepresentable: UIViewRepresentable {
     func makeUIView(context: Context) -> VLCPlayerView {
         let playerView = VLCPlayerView()
-        playerView.playRTSP()
+        
+        // Delay playback to ensure view is properly set up
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            playerView.playRTSP()
+        }
+        
         return playerView
     }
     
     func updateUIView(_ playerView: VLCPlayerView, context: Context) {
-        // Auto-play on update
+        // Ensure drawable is properly set
+        if let mediaPlayer = playerView.vlcMediaPlayer {
+            mediaPlayer.drawable = playerView
+        }
     }
 }
 
