@@ -82,17 +82,12 @@ class VLCPlayerView: UIView {
         }
         
         let media = VLCMedia(url: url)
-        // Enhanced network options for reliable RTSP streaming
-        media.addOption("--rtsp-tcp")
-        media.addOption("--network-caching=300")
-        media.addOption("--rtsp-caching=300")
-        media.addOption("--rtsp-frame-buffer-size=500000")
-        media.addOption("--verbose=2")
-        
-        // Fix IP binding issues
-        media.addOption("--intf=dummy")
-        media.addOption("--no-interact")
-        media.addOption("--rtsp-mcast-timeout=5")
+        // Minimal options for iOS compatibility
+        media.addOption("--network-caching=1000")
+        media.addOption("--rtsp-caching=1000")
+        media.addOption("--live-caching=1000")
+        media.addOption("--no-audio")
+        media.addOption("--rtsp-frame-buffer-size=1000000")
         
         print("📡 VLC options configured for \(urlString)")
         
