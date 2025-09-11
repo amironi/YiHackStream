@@ -19,8 +19,17 @@ class VLCPlayerView: UIView {
     private func setupPlayer() {
         backgroundColor = .black
         
-        // Initialize VLC library with proper options
-        let vlcLibrary = VLCLibrary.shared()
+        // Initialize VLC library with iOS-specific arguments
+        let vlcArgs = [
+            "--intf=dummy",
+            "--no-interact",
+            "--no-video-title-show",
+            "--network-caching=1000",
+            "--rtsp-caching=1000",
+            "--live-caching=1000"
+        ]
+        
+        let vlcLibrary = VLCLibrary(options: vlcArgs)
         
         vlcMediaPlayer = VLCMediaPlayer(library: vlcLibrary)
         vlcMediaPlayer?.drawable = self
@@ -44,11 +53,6 @@ class VLCPlayerView: UIView {
             // Try multiple RTSP URL formats for Yi cameras
             let urlStrings = [
                 "rtsp://192.168.1.127/ch0_0.h264",
-                "rtsp://192.168.1.127:554/ch0_0.h264",
-                "rtsp://192.168.1.127/live/ch0_0.h264",
-                "rtsp://192.168.1.127:554/live/ch0_0.h264",
-                "rtsp://192.168.1.127/ch0_1.h264",
-                "rtsp://192.168.1.127:554/ch0_1.h264"
             ]
             
             self?.tryRTSPUrls(urlStrings, mediaPlayer: mediaPlayer, index: 0)
@@ -82,12 +86,7 @@ class VLCPlayerView: UIView {
         }
         
         let media = VLCMedia(url: url)
-        // Minimal options for iOS compatibility
-        media.addOption("--network-caching=1000")
-        media.addOption("--rtsp-caching=1000")
-        media.addOption("--live-caching=1000")
-        media.addOption("--no-audio")
-        media.addOption("--rtsp-frame-buffer-size=1000000")
+        // No additional media options - use library-level configuration only
         
         print("📡 VLC options configured for \(urlString)")
         
